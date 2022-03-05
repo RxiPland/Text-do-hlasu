@@ -167,6 +167,8 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
 
     def poslechnout(self):
 
+        # přehraje stežený soubor
+
 
         odpoved = str(self.presunout_do_temp())
 
@@ -201,6 +203,8 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
             msgBox.exec()
 
     def presunout_do_lokace_od_uzivatele(self):
+
+        # přesune stažený soubor do vybraného místa
 
         odpoved = str(self.presunout_do_temp())
 

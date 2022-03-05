@@ -8,7 +8,7 @@ class Ui_MainWindow_hlavni_menu(object):
 
 
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(528, 382)
+        MainWindow.resize(528, 369)
 
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -76,7 +76,7 @@ class Ui_MainWindow_hlavni_menu(object):
 
 
         self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(370, 80, 131, 31))
+        self.comboBox_2.setGeometry(QtCore.QRect(370, 70, 131, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
