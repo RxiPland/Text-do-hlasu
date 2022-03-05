@@ -1,6 +1,6 @@
 # Text do hlasu
 
-Převede vaši zprávu do google překladač hlasu. Můžete si vybrat z různých jazyků.
+Převede vaši zprávu do google překladač hlasu ve formátu mp3. Můžete si vybrat z různých jazyků.
 #
 Pro spuštění celého programu slouží main.py
 #
