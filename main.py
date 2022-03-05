@@ -20,7 +20,31 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
         QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
 
-    
+
+    def dostupne_jazyky_funkce(self):
+
+        # tato funkce uchovává všechny dostupné jazyky pro tento program
+
+        dostupne_jazyky = {"Česky": "cs", "Slovensky": "sk", "Anglicky": "en", "Německy": "de", "Polsky": "pl", "Francouzsky": "fr", "Rusky": "ru"}
+
+        return dostupne_jazyky
+
+
+    def vymazani_temp_slozky(self):
+
+        # smaže složku Temp po ukončení programu
+
+        cesta_program = os.getcwd()
+        cesta_temp_slozka = cesta_program + "\\temp"
+
+        try:
+
+            shutil.rmtree(cesta_temp_slozka)
+
+        except:
+            
+            pass
+
     def vytvoreni_temp_slozky(self):
 
         cesta_program = os.getcwd()
@@ -29,6 +53,7 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
         if not exists(cesta_temp_slozka):
 
             os.mkdir(cesta_temp_slozka)
+
 
     def prvni_spusteni(self):
 
@@ -62,7 +87,7 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
         text_ke_stazeni = str(self.plainTextEdit.toPlainText())
         jazyk_combobox = str(self.comboBox.currentText())
 
-        dostupne_jazyky = {"Česky": "cs", "Anglicky": "en", "Německy": "de", "Francouzsky": "fr", "Rusky": "ru"}
+        dostupne_jazyky = self.dostupne_jazyky_funkce()
 
         # zkontroluje, jestli soubor již existuje - pokud ano, nic se stahovat nebude
 
@@ -182,7 +207,7 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
         text_ke_stazeni = str(self.plainTextEdit.toPlainText())
         jazyk_combobox = str(self.comboBox.currentText())
 
-        dostupne_jazyky = {"Česky": "cs", "Anglicky": "en", "Německy": "de", "Francouzsky": "fr", "Rusky": "ru"}
+        dostupne_jazyky = self.dostupne_jazyky_funkce()
 
         cesta_program = os.getcwd()
         cesta_temp_slozka = cesta_program + "\\temp"
@@ -233,7 +258,7 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
             text_ke_stazeni = str(self.plainTextEdit.toPlainText())
             jazyk_combobox = str(self.comboBox.currentText())
 
-            dostupne_jazyky = {"Česky": "cs", "Anglicky": "en", "Německy": "de", "Francouzsky": "fr", "Rusky": "ru"}
+            dostupne_jazyky = self.dostupne_jazyky_funkce()
 
             cesta_program = os.getcwd()
             cesta_temp_slozka = cesta_program + "\\temp"
@@ -291,4 +316,5 @@ if __name__ == "__main__":
     hlavni_menu1.pushButton_3.clicked.connect(hlavni_menu1.reset_tlacitko)
     hlavni_menu1.pushButton_4.clicked.connect(hlavni_menu1.zdrojovy_kod)
 
+    app.aboutToQuit.connect(hlavni_menu1.vymazani_temp_slozky)
     sys.exit(app.exec_())

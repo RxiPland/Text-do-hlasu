@@ -73,6 +73,8 @@ class Ui_MainWindow_hlavni_menu(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
 
 
         self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
@@ -104,8 +106,10 @@ class Ui_MainWindow_hlavni_menu(object):
         self.pushButton_4.setText(_translate("MainWindow", "Zdrojový kód"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Vyberte jazyk"))
         self.comboBox.setItemText(1, _translate("MainWindow", "Česky"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "Anglicky"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "Německy"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "Francouzsky"))
-        self.comboBox.setItemText(5, _translate("MainWindow", "Rusky"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "Slovensky"))
+        self.comboBox.setItemText(3, _translate("MainWindow", "Anglicky"))
+        self.comboBox.setItemText(4, _translate("MainWindow", "Německy"))
+        self.comboBox.setItemText(5, _translate("MainWindow", "Polsky"))
+        self.comboBox.setItemText(6, _translate("MainWindow", "Francouzsky"))
+        self.comboBox.setItemText(7, _translate("MainWindow", "Rusky"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "mp3"))
