@@ -1,3 +1,6 @@
+# Vytvořil RxiPland
+# 2022
+
 import os
 from os.path import exists
 import urllib.request
