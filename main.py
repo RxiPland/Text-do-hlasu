@@ -7,6 +7,7 @@ import hashlib
 from PyQt5.QtWidgets import QMessageBox, QMainWindow, QApplication, QFileDialog, QDialog
 from hlavni_menu import Ui_MainWindow_hlavni_menu
 import playsound
+import webbrowser
 
 class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
 
@@ -42,6 +43,11 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
 
         self.plainTextEdit.clear()
         self.comboBox.setCurrentText("Vyberte jazyk")
+
+    
+    def zdrojovy_kod(self):
+
+        webbrowser.open("https://github.com/RxiPland/Text-do-hlasu")
 
 
     def presunout_do_temp(self):
@@ -181,7 +187,87 @@ class hlavni_menu0(QMainWindow, Ui_MainWindow_hlavni_menu):
 
         cesta_k_mp3 = str(cesta_temp_slozka + "\\" + dostupne_jazyky[jazyk_combobox] + "_" + zprava_uzivatel_hash + ".mp3")
 
-        playsound.playsound(cesta_k_mp3, True)
+        try:
+
+            playsound.playsound(cesta_k_mp3, True)
+
+        except:
+
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Warning)
+            msgBox.setWindowTitle("Problém")
+            msgBox.setText("Zvuk se nepodařilo přehrát! Možné řešení:\n\n(1) Názvy složek, kde se nachází tento program mají v názvu háčky nebo čárky (přejmenujte složky)\n\nCesta:\n" + cesta_program)
+            msgBox.setStandardButtons(QMessageBox.Ok)
+            msgBox.exec()
+
+    def presunout_do_lokace_od_uzivatele(self):
+
+        odpoved = str(self.presunout_do_temp())
+
+        if odpoved != "1":
+
+            return
+
+        nova_cesta = file_dialog1.vyberLokace()
+
+        if nova_cesta == "":
+
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Warning)
+            msgBox.setWindowTitle("Problém")
+            msgBox.setText("Cesta nebyla vybrána!")
+            msgBox.setStandardButtons(QMessageBox.Ok)
+            msgBox.exec()
+
+            return
+
+        else:
+
+            text_ke_stazeni = str(self.plainTextEdit.toPlainText())
+            jazyk_combobox = str(self.comboBox.currentText())
+
+            dostupne_jazyky = {"Česky": "cs", "Anglicky": "en", "Německy": "de", "Francouzsky": "fr", "Rusky": "ru"}
+
+            cesta_program = os.getcwd()
+            cesta_temp_slozka = cesta_program + "\\temp"
+
+            zprava_uzivatel_hash = hashlib.md5(text_ke_stazeni.encode())
+            zprava_uzivatel_hash = str(zprava_uzivatel_hash.hexdigest())
+
+            cesta_k_souboru = cesta_temp_slozka + "\\" + dostupne_jazyky[jazyk_combobox] + "_" + zprava_uzivatel_hash + ".mp3"
+
+            try:
+
+                shutil.move(cesta_k_souboru, str(nova_cesta + "\\" + dostupne_jazyky[jazyk_combobox] + "_" + zprava_uzivatel_hash + ".mp3"))
+
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Question)
+                msgBox.setWindowTitle("Oznámení")
+                msgBox.setText("Soubor byl úspěšně přesunut")
+                msgBox.setStandardButtons(QMessageBox.Ok)
+                msgBox.exec()
+
+            except:
+
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Warning)
+                msgBox.setWindowTitle("Problém")
+                msgBox.setText("Soubor se nepodařilo přesunout!")
+                msgBox.setStandardButtons(QMessageBox.Ok)
+                msgBox.exec()
+
+
+class file_dialog0(QDialog):
+
+    def vyberLokace(self):
+
+        # otevře průzkumník souborů a uživatel vybere cestu, kam bude chtít uložit mp3 soubor
+
+        dlg = QFileDialog.getExistingDirectory(self, 'Vyberte, kam se má mp3 soubor uložit', '', QFileDialog.ShowDirsOnly)
+
+        return str(dlg)
+
+        
 
 if __name__ == "__main__":
 
@@ -189,10 +275,13 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     hlavni_menu1 = hlavni_menu0()
+    file_dialog1 = file_dialog0()
 
     hlavni_menu1.prvni_spusteni()
 
     hlavni_menu1.pushButton.clicked.connect(hlavni_menu1.poslechnout)
+    hlavni_menu1.pushButton_2.clicked.connect(hlavni_menu1.presunout_do_lokace_od_uzivatele)
     hlavni_menu1.pushButton_3.clicked.connect(hlavni_menu1.reset_tlacitko)
+    hlavni_menu1.pushButton_4.clicked.connect(hlavni_menu1.zdrojovy_kod)
 
     sys.exit(app.exec_())

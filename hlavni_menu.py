@@ -26,7 +26,7 @@ class Ui_MainWindow_hlavni_menu(object):
 
 
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(380, 250, 111, 41))
+        self.pushButton.setGeometry(QtCore.QRect(380, 200, 111, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
@@ -35,7 +35,7 @@ class Ui_MainWindow_hlavni_menu(object):
 
 
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(380, 300, 111, 41))
+        self.pushButton_2.setGeometry(QtCore.QRect(380, 250, 111, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
@@ -43,12 +43,21 @@ class Ui_MainWindow_hlavni_menu(object):
         self.pushButton_2.setObjectName("pushButton_2")
 
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(380, 160, 111, 41))
+        self.pushButton_3.setGeometry(QtCore.QRect(380, 130, 111, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
+
+
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(380, 320, 111, 23))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        self.pushButton_4.setFont(font)
+        self.pushButton_4.setObjectName("pushButton_4")
 
 
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
@@ -92,6 +101,7 @@ class Ui_MainWindow_hlavni_menu(object):
         self.pushButton.setText(_translate("MainWindow", "Přehrát"))
         self.pushButton_2.setText(_translate("MainWindow", "Stáhnout"))
         self.pushButton_3.setText(_translate("MainWindow", "Reset"))
+        self.pushButton_4.setText(_translate("MainWindow", "Zdrojový kód"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Vyberte jazyk"))
         self.comboBox.setItemText(1, _translate("MainWindow", "Česky"))
         self.comboBox.setItemText(2, _translate("MainWindow", "Anglicky"))
