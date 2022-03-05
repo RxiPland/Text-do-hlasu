@@ -1,8 +1,8 @@
 # Text do hlasu
 
-Převede vaši zprávu do google překladač hlasu ve formátu mp3. Můžete si vybrat z různých jazyků.
-#
 Pro spuštění celého programu slouží main.py
+#
+- Převede vaši zprávu do google překladač hlasu ve formátu mp3. Můžete si vybrat z různých jazyků.
 #
 # Použité knihovny:
 ```
